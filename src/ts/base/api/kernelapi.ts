@@ -26,7 +26,7 @@ export default class KernelApi {
   private constructor(url: string) {
     this._methods = {};
     this._anystore = AnyStore.getInstance();
-    this._storeHub = new StoreHub(url, 'txt');
+    this._storeHub = new StoreHub(url, 'json');//protocol参数改为json，websocket 二进制数据可明文显示
     this._storeHub.on('Receive', (res: model.ReceiveType) => {
       const methods = this._methods[res.target.toLowerCase()];
       if (methods) {
